@@ -1,11 +1,18 @@
+import joblib
+import pandas as pd
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 
-from model_pipeline import TEAMS, win_prob_latest
-
 app = FastAPI()
+
+# ---------- STARTUP: load pre-trained artifacts ----------
+MODEL = joblib.load("model.joblib")
+SCALER = joblib.load("scaler.joblib")
+LATEST = pd.read_csv("latest_features.csv", index_col="team")
+# -----------------------------------------------------------
+
 
 class PredictRequest(BaseModel):
     home_team: str
@@ -29,3 +36,4 @@ def home():
     return FileResponse("static/index.html")
 
 app.mount("/static", StaticFiles(directory="static"), name="static")
+

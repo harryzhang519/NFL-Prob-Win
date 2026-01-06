@@ -180,3 +180,12 @@ def win_prob_latest(home_team: str, away_team: str) -> dict:
         "home_win_prob": p_home,
         "away_win_prob": 1.0 - p_home,
     }
+
+import joblib
+
+def save_artifacts():
+    joblib.dump(MODEL, "model.joblib")
+    joblib.dump(SCALER, "scaler.joblib")
+    LATEST.to_csv("latest_features.csv")
+
+save_artifacts()

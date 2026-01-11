@@ -18,17 +18,17 @@ Data processing using Polars and pandas
 
 Tech Stack
 
-Python
+- Python
 
-FastAPI
+- FastAPI
 
-Uvicorn
+- Uvicorn
 
-Polars
+- Polars
 
-pandas
+- pandas
 
-scikit-learn
+- scikit-learn
 
 Running the App Locally
 
